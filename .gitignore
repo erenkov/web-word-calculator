@@ -2,3 +2,4 @@ out
 .idea
 javadocs
 target
+pom.xml
