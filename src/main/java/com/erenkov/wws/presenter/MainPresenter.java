@@ -18,6 +18,8 @@ public interface MainPresenter {
     /**
      * This method commands to start loading the page to the hard drive
      *
+     * @param urlStr string with url
+     * @return true if the page was loaded, or else false
      */
-    void downloadPage(String urlStr);
+    boolean downloadPage(String urlStr);
 }

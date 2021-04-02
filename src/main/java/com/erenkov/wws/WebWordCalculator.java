@@ -8,6 +8,7 @@ import com.erenkov.wws.presenter.impl.SimpleMainPresenter;
 import com.erenkov.wws.presenter.impl.SimpleStatisticPresenter;
 import com.erenkov.wws.service.DownloadService;
 import com.erenkov.wws.service.impl.SimpleDownloadService;
+import com.erenkov.wws.utils.SimpleLogger;
 import com.erenkov.wws.view.MainView;
 import com.erenkov.wws.view.impl.ConsoleMainView;
 
@@ -26,6 +27,8 @@ public class WebWordCalculator
      */
     public static void main(String[] args) {
 
+        SimpleLogger.logLabel("Program run");
+
         StatisticRepository statisticRepository = new SimpleStatisticRepository();
 
         DownloadService downloadService = new SimpleDownloadService();
@@ -36,5 +39,8 @@ public class WebWordCalculator
         MainView mainView = new ConsoleMainView(mainPresenter, statisticPresenter);
 
         mainView.start();
+
+        SimpleLogger.logLabel("Program finish");
+
     }
 }

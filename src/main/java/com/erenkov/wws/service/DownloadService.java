@@ -9,6 +9,7 @@ public interface DownloadService {
      * This method downloads web page from url
      *
      * @param urlStr url (String)
+     * @return true if the page was loaded, or else false
      */
-    void downloadWebPageFromUrl(String urlStr);
+    boolean downloadWebPageFromUrl(String urlStr);
 }

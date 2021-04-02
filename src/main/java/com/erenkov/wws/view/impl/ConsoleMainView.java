@@ -1,6 +1,6 @@
 package com.erenkov.wws.view.impl;
 
-import com.erenkov.wws.utils.ConsoleIOUtility;
+import com.erenkov.wws.utils.*;
 import com.erenkov.wws.view.*;
 import com.erenkov.wws.presenter.*;
 
@@ -44,15 +44,25 @@ public class ConsoleMainView implements MainView {
 
             buffer = displayMainMenuDialog();
 
-            switch (buffer.toString().trim().toLowerCase()) {
+            switch (buffer.toString().trim().toLowerCase()) { // Для возможности расширить функционал - case
 
                 case "0":                      // exit
                     shouldRun = false;
                     break;
 
+                case "":
+                    break;
+
                 default:                       // download page
-                    mainPresenter.downloadPage(buffer.toString());
-                    statisticView.start();
+                    if(mainPresenter.downloadPage(buffer.toString())){
+                        String successfulMsg = buffer.toString() + " page loaded successfully";
+                        ConsoleIOUtility.print(successfulMsg);
+                        ConsoleIOUtility.printLine1();
+                        SimpleLogger.logInfo(successfulMsg);
+                        statisticView.start();
+                    } else {
+                        displayPressEnterDialog();
+                    }
             }
         }
         ConsoleIOUtility.print("Goodbye!");
@@ -63,7 +73,7 @@ public class ConsoleMainView implements MainView {
      */
     private void displayGreeting() {
         ConsoleIOUtility.printLine2();
-        ConsoleIOUtility.print("   Hello! This is \"web-word-statistic utils\" by Erenkov Aleksandr. Let`s go!");
+        ConsoleIOUtility.print("   Hello! This is \"web-word-statistic\" utility by Erenkov Aleksandr. Let`s go!");
         ConsoleIOUtility.printLine2();
     }
 

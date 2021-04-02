@@ -34,8 +34,8 @@ public class SimpleMainPresenter implements MainPresenter {
      * @see MainPresenter#downloadPage(String)
      */
     @Override
-    public void downloadPage(String urlStr) {
-        downloadService.downloadWebPageFromUrl(urlStr);
+    public boolean downloadPage(String urlStr) {
+        return downloadService.downloadWebPageFromUrl(urlStr);
     }
 
 }
