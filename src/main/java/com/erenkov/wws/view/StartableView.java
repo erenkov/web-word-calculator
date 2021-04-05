@@ -9,5 +9,4 @@ public interface StartableView {
      * This method displays view
      */
     void start();
-
 }

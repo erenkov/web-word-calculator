@@ -4,6 +4,8 @@ import com.erenkov.wws.presenter.StatisticPresenter;
 import com.erenkov.wws.view.StatisticView;
 import com.erenkov.wws.utils.ConsoleIOUtility;
 
+import java.util.Map;
+
 /**
  * This is a simple implementation of the StatisticView interface.
  * This class implements methods for displaying statistic on the console.
@@ -42,11 +44,11 @@ public class ConsoleStatisticView implements StatisticView {
                     break;
 
                 case "1":
-                    displayLastPageStatistic();
+                    displayLastPageStatistics();
                     break;
 
                 case "2":
-                    displayAllStatistic();
+                    displayAllStatistics();
                     break;
 
                 default:
@@ -56,10 +58,9 @@ public class ConsoleStatisticView implements StatisticView {
     }
 
     /**
-     * @see StatisticView#displayStatisticNotFoundError()
+     * This method print error statistics not found msg
      */
-    @Override
-    public void displayStatisticNotFoundError() {
+    private void displayStatisticNotFoundError() {
         ConsoleIOUtility.print("------ Statistic not found! -----------------------");
         ConsoleIOUtility.printLine1();
     }
@@ -74,18 +75,22 @@ public class ConsoleStatisticView implements StatisticView {
     /**
      * This method prints statistics from database
      */
-    private void displayAllStatistic() {
+    private void displayAllStatistics() {
         ConsoleIOUtility.print("Statistic from data base:\n");
         ConsoleIOUtility.print(statisticPresenter.getAllStatistic());
         ConsoleIOUtility.printLine1();
     }
 
     /**
-     * This method calculate statistics from the last page
+     * This method calculate statistics from the last page,
+     * sorts statistics by unique words and displays statistics
      */
-    private void displayLastPageStatistic() {
+    private void displayLastPageStatistics() {
         ConsoleIOUtility.print("Statistic from file:\n");
-        ConsoleIOUtility.print(statisticPresenter.getLastPageStatistic());
+        statisticPresenter.getLastPageStatistic()
+                .entrySet().stream()
+                .sorted(Map.Entry.comparingByKey())
+                .forEach(m -> System.out.println(m.getKey() + " - " + m.getValue()));
         ConsoleIOUtility.printLine1();
     }
 
@@ -111,8 +116,9 @@ public class ConsoleStatisticView implements StatisticView {
     private StringBuilder displayWhatStatisticDialog() {
         ConsoleIOUtility.print("");
         return ConsoleIOUtility.read(
-                "Choose \"0\" for back to main menu" + "\n" + //
-                "Choose \"1\" for calculate last page statistic" + "\n" + //
-                "Choose \"2\" for all page statistic" );
+                "- Choose \"0\" for back to main menu" + "\n" + //
+                        "- Choose \"1\" for calculate last page statistic, save statistics to database and" + "\n" + //
+                        "  display statistics of the last page" + "\n" + //
+                        "- Choose \"2\" to display statistics for all pages from the database");
     }
 }

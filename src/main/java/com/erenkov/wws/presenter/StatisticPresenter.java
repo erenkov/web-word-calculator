@@ -2,6 +2,8 @@ package com.erenkov.wws.presenter;
 
 import com.erenkov.wws.view.StatisticView;
 
+import java.util.Map;
+
 /**
  * Interface for admin menu presenter
  */
@@ -26,5 +28,5 @@ public interface StatisticPresenter {
      *
      * @return string with all users
      */
-    String getLastPageStatistic();
+    Map<String, Long> getLastPageStatistic();
 }

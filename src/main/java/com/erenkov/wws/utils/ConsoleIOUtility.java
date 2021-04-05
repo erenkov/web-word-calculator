@@ -5,7 +5,7 @@ import java.util.Scanner;
 /**
  * This class provides methods for read/write information from/to console
  */
-public class ConsoleIOUtility{
+public class ConsoleIOUtility {
 
     private static final Scanner scanner = new Scanner(System.in);
 
@@ -25,7 +25,7 @@ public class ConsoleIOUtility{
      * @param outString line to print.
      * @return StringBuilder with input line.
      */
-    public static StringBuilder read(String outString){
+    public static StringBuilder read(String outString) {
         print(outString);
         StringBuilder buffer = new StringBuilder(scanner.nextLine().trim());
         printLine1();

@@ -17,8 +17,8 @@ public class ConsoleMainView implements MainView {
     /**
      * Constructor with parameter
      *
-     * @param mainPresenter           presenter for this view
-     * @param statisticPresenter        presenter for statistic view
+     * @param mainPresenter      presenter for this view
+     * @param statisticPresenter presenter for statistic view
      */
     public ConsoleMainView(MainPresenter mainPresenter,
                            StatisticPresenter statisticPresenter) {
@@ -54,7 +54,7 @@ public class ConsoleMainView implements MainView {
                     break;
 
                 default:                       // download page
-                    if(mainPresenter.downloadPage(buffer.toString())){
+                    if (mainPresenter.downloadPage(buffer.toString())) {
                         String successfulMsg = buffer.toString() + " page loaded successfully";
                         ConsoleIOUtility.print(successfulMsg);
                         ConsoleIOUtility.printLine1();
@@ -85,8 +85,8 @@ public class ConsoleMainView implements MainView {
     private StringBuilder displayMainMenuDialog() {
         ConsoleIOUtility.printMenuHeader("MAIN");
         return ConsoleIOUtility.read(
-                        "Please choose \"0\" for exit, or" + "\n" + //
-                        "input \"URL\" for download page:");
+                "Please choose \"0\" for exit, or" + "\n" + //
+                        "input \"URL\" to load the page:");
     }
 
     /**
