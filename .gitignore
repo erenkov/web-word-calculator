@@ -1,8 +1,6 @@
 out
-.idea
 javadocs
 target
 pom.xml
 log.txt
-log.config
-web-word-calculator.iml
+temp.html
