@@ -10,7 +10,7 @@ import com.erenkov.wws.view.MainView;
  */
 public class SimpleMainPresenter implements MainPresenter {
 
-    private MainView mainView;
+    private MainView mainView; // MVP
     private final DownloadService downloadService;
 
     /**
@@ -37,6 +37,5 @@ public class SimpleMainPresenter implements MainPresenter {
     public boolean downloadPage(String urlStr) {
         return downloadService.downloadWebPageFromUrl(urlStr);
     }
-
 }
 

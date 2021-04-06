@@ -15,7 +15,7 @@ public class ConsoleMainView implements MainView {
     private final StatisticView statisticView;
 
     /**
-     * Constructor with parameter
+     * Constructor with parameters
      *
      * @param mainPresenter      presenter for this view
      * @param statisticPresenter presenter for statistic view
@@ -38,22 +38,23 @@ public class ConsoleMainView implements MainView {
 
         displayGreeting();
 
-        StringBuilder buffer;  // buffer scanner
+        StringBuilder buffer;  // buffer для scanner'а
+
         boolean shouldRun = true;
-        while (shouldRun) {    // FOREVER - чтение информации от пользователя. Выход - "0" => break
+        while (shouldRun) {    // - FOREVER - чтение информации от пользователя. Выход - "0" => break
 
             buffer = displayMainMenuDialog();
 
             switch (buffer.toString().trim().toLowerCase()) { // Для возможности расширить функционал - case
 
-                case "0":                      // exit
+                case "0":     // exit
                     shouldRun = false;
                     break;
 
-                case "":
+                case "":      // continue
                     break;
 
-                default:                       // download page
+                default:      // download page. template : <https://www.simbirsoft.com/>
                     if (mainPresenter.downloadPage(buffer.toString())) {
                         String successfulMsg = buffer.toString() + " page loaded successfully";
                         ConsoleIOUtility.print(successfulMsg);
@@ -85,7 +86,7 @@ public class ConsoleMainView implements MainView {
     private StringBuilder displayMainMenuDialog() {
         ConsoleIOUtility.printMenuHeader("MAIN");
         return ConsoleIOUtility.read(
-                "Please choose \"0\" for exit, or" + "\n" + //
+                "Please choose \"0\" for exit, or\n" + //
                         "input \"URL\" to load the page:");
     }
 

@@ -17,14 +17,7 @@ public interface StatisticPresenter {
     void setStatisticView(StatisticView statisticView);
 
     /**
-     * This method finds all users in storage
-     *
-     * @return string with all users
-     */
-    String getAllStatistic();
-
-    /**
-     * This method finds all users in storage
+     * This method calculates statistics from the last page
      *
      * @return string with all users
      */

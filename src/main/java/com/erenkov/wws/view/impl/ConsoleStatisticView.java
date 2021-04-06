@@ -31,9 +31,10 @@ public class ConsoleStatisticView implements StatisticView {
 
         displayStatisticMenuHeader();
 
-        StringBuilder buffer;  // buffer scanner
+        StringBuilder buffer;  // buffer для scanner'а
+
         boolean shouldRun = true;
-        while (shouldRun) {    // FOREVER - чтение информации от пользователя. Выход - "0" => break
+        while (shouldRun) {    // - FOREVER - чтение информации от пользователя. Выход - "0" => break
 
             buffer = displayWhatStatisticDialog();
 
@@ -47,22 +48,10 @@ public class ConsoleStatisticView implements StatisticView {
                     displayLastPageStatistics();
                     break;
 
-                case "2":
-                    displayAllStatistics();
-                    break;
-
                 default:
                     displayInputError();
             }
         }
-    }
-
-    /**
-     * This method print error statistics not found msg
-     */
-    private void displayStatisticNotFoundError() {
-        ConsoleIOUtility.print("------ Statistic not found! -----------------------");
-        ConsoleIOUtility.printLine1();
     }
 
     /**
@@ -73,16 +62,7 @@ public class ConsoleStatisticView implements StatisticView {
     }
 
     /**
-     * This method prints statistics from database
-     */
-    private void displayAllStatistics() {
-        ConsoleIOUtility.print("Statistic from data base:\n");
-        ConsoleIOUtility.print(statisticPresenter.getAllStatistic());
-        ConsoleIOUtility.printLine1();
-    }
-
-    /**
-     * This method calculate statistics from the last page,
+     * This method calculates statistics from the last page,
      * sorts statistics by unique words and displays statistics
      */
     private void displayLastPageStatistics() {
@@ -95,7 +75,7 @@ public class ConsoleStatisticView implements StatisticView {
     }
 
     /**
-     * This method print error input msg
+     * This method prints error input msg
      */
     private void displayInputError() {
         ConsoleIOUtility.print("------ Input Error! Try again -------");
@@ -116,9 +96,7 @@ public class ConsoleStatisticView implements StatisticView {
     private StringBuilder displayWhatStatisticDialog() {
         ConsoleIOUtility.print("");
         return ConsoleIOUtility.read(
-                "- Choose \"0\" for back to main menu" + "\n" + //
-                        "- Choose \"1\" for calculate last page statistic, save statistics to database and" + "\n" + //
-                        "  display statistics of the last page" + "\n" + //
-                        "- Choose \"2\" to display statistics for all pages from the database");
+                "- Choose \"0\" for back to main menu\n" + //
+                        "- Choose \"1\" for calculate last page statistics, display statistics of the last page\n");
     }
 }

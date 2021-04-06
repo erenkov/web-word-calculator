@@ -4,6 +4,8 @@ import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Objects;
 
+//К сожалению не успел реализовать запись/считывание в/из БД
+
 /**
  * This is class for ORM Statistic.<br>
  * Fields: <br>
@@ -24,7 +26,7 @@ public class StatisticsDataSet implements Serializable {
     @Column(name = "word", unique = true, updatable = false)
     private String word;
 
-    @Column(name = "count", unique = true, updatable = true)
+    @Column(name = "count", unique = true)
     private Long count;
 
     @SuppressWarnings("UnusedDeclaration")

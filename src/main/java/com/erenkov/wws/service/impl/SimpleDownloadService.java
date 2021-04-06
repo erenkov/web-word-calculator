@@ -18,7 +18,7 @@ public class SimpleDownloadService implements DownloadService {
     @Override
     public boolean downloadWebPageFromUrl(String urlStr) {
 
-        String tempFileName = "temp.html";
+        String tempFileName = "temp.html"; // Временное хранилище загруженной web-страницы
         File tempFile;
 
         try (InputStreamReader inputStreamReader = new InputStreamReader(

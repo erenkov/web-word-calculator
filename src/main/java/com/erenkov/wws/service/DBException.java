@@ -1,7 +1,0 @@
-package com.erenkov.wws.service;
-
-public class DBException extends Exception {
-    public DBException(Throwable throwable) {
-        super(throwable);
-    }
-}

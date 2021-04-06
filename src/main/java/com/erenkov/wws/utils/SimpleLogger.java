@@ -10,9 +10,9 @@ import java.util.logging.Logger;
  */
 public class SimpleLogger {
 
-    static Logger simpleLogger;
+    static private Logger simpleLogger;
 
-    static {
+    static { //конфигурация из файла log.config
         try (FileInputStream ins = new FileInputStream("log.config")) {
             LogManager.getLogManager().readConfiguration(ins);
             simpleLogger = Logger.getLogger(SimpleLogger.class.getName());
@@ -48,7 +48,7 @@ public class SimpleLogger {
     }
 
     /**
-     * This method prints a msg to a log file
+     * This method prints a label-msg to a log file (tracer-unit)
      *
      * @param msg message
      */

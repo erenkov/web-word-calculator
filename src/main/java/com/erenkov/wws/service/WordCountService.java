@@ -3,7 +3,7 @@ package com.erenkov.wws.service;
 import java.util.Map;
 
 /**
- * Interface for word count service
+ * Interface for word counting service
  */
 public interface WordCountService {
 

@@ -6,7 +6,6 @@ import com.erenkov.wws.presenter.impl.SimpleMainPresenter;
 import com.erenkov.wws.presenter.impl.SimpleStatisticPresenter;
 import com.erenkov.wws.service.DownloadService;
 import com.erenkov.wws.service.WordCountService;
-import com.erenkov.wws.service.DBService;
 import com.erenkov.wws.service.impl.SimpleDownloadService;
 import com.erenkov.wws.service.impl.SimpleWordCountService;
 import com.erenkov.wws.utils.SimpleLogger;
@@ -26,19 +25,24 @@ public class WebWordCalculator {
      */
     public static void main(String[] args) {
 
-        SimpleLogger.logLabel("Program run");
+        SimpleLogger.logLabel("Program run"); // В логгер отметка о начале программы
 
-        DBService dbService = new DBService();
-        DownloadService downloadService = new SimpleDownloadService();
-        WordCountService wordCountService = new SimpleWordCountService();
+        DownloadService downloadService = new SimpleDownloadService();  // Сервис выполняющий загрузку web-страницы
+                                                                        //       во временный файл "temp.html"
 
+        WordCountService wordCountService = new SimpleWordCountService(); // Сервис выполняющий подсчёт уникальных слов
+                                                                          //       из временного файла "temp.html"
+
+        // Далее реалиизован паттерн MVP
         MainPresenter mainPresenter = new SimpleMainPresenter(downloadService);
-        StatisticPresenter statisticPresenter = new SimpleStatisticPresenter(dbService, wordCountService);
+        StatisticPresenter statisticPresenter = new SimpleStatisticPresenter(wordCountService);
+
         MainView mainView = new ConsoleMainView(mainPresenter, statisticPresenter);
 
+        // Запуск диалога с пользователем
         mainView.start(); //run view
 
-        SimpleLogger.logLabel("Program finish");
+        SimpleLogger.logLabel("Program finish"); //В логгер отметка о начале программы
 
     }
 }
